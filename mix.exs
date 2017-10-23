@@ -7,7 +7,7 @@ defmodule GCloudex.Mixfile do
     [
      app: :gcloudex,
      version: @version,
-     elixir: "~> 1.2",
+     elixir: "~> 1.4",
      description: "Google Cloud for Elixir. Friendly set of wrappers for "
                    <> "Google Cloud Platform API's.",
      build_embedded: Mix.env == :prod,
@@ -35,9 +35,9 @@ defmodule GCloudex.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 0.8.3"},
-      {:goth,      "~> 0.1.2"},
-      {:poison,    "~> 1.2 or ~> 2.1"},
+      {:httpoison, "~> 0.13"},
+      {:goth,      "~> 0.7.0"},
+      {:poison,    "~> 3.1"},
       {:credo,     "~> 0.3.13", only: [:dev, :test]},
       {:ex_doc,    ">= 0.11.0", only: [:dev]},
       {:earmark,   ">= 0.0.0"}

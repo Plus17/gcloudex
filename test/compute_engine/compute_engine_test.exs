@@ -1249,27 +1249,7 @@ defmodule ComputeEngineTest do
     expected  = build_expected(:post, endpoint, headers, body, query |> URI.encode_query)
 
     assert expected == API.add_access_config zone, instance, interface, name, nat, fields
-  end      
-
-  test "add_access_config (no fields no nat)" do 
-    zone      = "zone"
-    instance  = "instance"
-    interface = "interface"
-    name      = "name"
-    nat       = ""
-    headers   = [{"Content-Type", "application/json"}]
-    query     = %{}
-    body      = %{
-      "kind"   => "compute#accessConfig",
-      "type"   => "ONE_TO_ONE_NAT",
-      "name"   => name,
-      "natIP"  => nat
-    } |> Poison.encode!
-    endpoint  = @no_zone_ep <> "/zones/#{zone}/instances/#{instance}/addAccessConfig"
-    expected  = build_expected(:post, endpoint, headers, body, query |> URI.encode_query)
-
-    assert expected == API.add_access_config zone, instance, interface, name, nat
-  end        
+  end     
 
   test "delete_access_config (no fields)" do 
     zone      = "zone"
@@ -1480,29 +1460,7 @@ defmodule ComputeEngineTest do
     expected  = build_expected(:post, endpoint, headers, body)
 
     assert expected == API.set_metadata zone, instance, fp, items
-  end     
-
-  test "set_metadata (no fields)" do 
-    zone      = "zone"
-    instance  = "instance"
-    fp        = "fingerprint"
-    items     = [
-      %{"key" => "val1", "value" => "val2"},
-      %{"key" => "val3", "value" => "val4"}
-    ]
-    headers   = [{"Content-Type", "application/json"}]
-    body      = %{
-      "kind"        => "compute#metadata",
-      "fingerprint" => fp,
-      "items"       => items
-    } |> Poison.encode!
-    fields    = "a,b,c"
-    query     = %{"fields" => fields}
-    endpoint  = @no_zone_ep <> "/zones/#{zone}/instances/#{instance}/setMetadata"
-    expected  = build_expected(:post, endpoint, headers, body, query |> URI.encode_query)
-
-    assert expected == API.set_metadata zone, instance, fp, items, fields
-  end       
+  end      
 
   test "set_scheduling (no fields)" do 
     zone      = "zone"
